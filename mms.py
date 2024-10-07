@@ -355,7 +355,7 @@ while 1:
                 print(f'{n}: {mat_to_string(clean(expand(m, i), 1))}')
             print('. . .')
         if mode == 2:
-            text = input('\nEnter the MMS matrix to be converted\n(type "limit" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\n')
+            text = input('\nEnter the MMS matrix to be converted\n(type "limit" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
             if text == '.':
                 mode = 0
                 continue
@@ -364,7 +364,10 @@ while 1:
             if t < 0:
                 print('Nonstandard')
                 continue
-            print(seq_to_string(mat_to_seq(m)))
+            try:
+                print(seq_to_string(mat_to_seq(m)))
+            except KeyboardInterrupt:
+                print('Interrupt detected')
         if mode == 3:
             mode = 0
             print('\nNot yet implemented ¯\\_(ツ)_/¯\n')
