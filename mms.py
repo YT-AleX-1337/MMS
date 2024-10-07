@@ -370,7 +370,7 @@ while 1:
             print('\nNot yet implemented ¯\\_(ツ)_/¯\n')
         if mode == 4:
             mode = 0
-            print('\nOriginal code in JavaScript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS\n')
+            print('\nOriginal code in JavaScript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS/blob/main/mms.py\n')
     except KeyboardInterrupt:
         print('\n\nBye!')
         exit()
