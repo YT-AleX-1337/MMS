@@ -352,7 +352,7 @@ while 1:
             if t == 4:
                 print('Matrix type: Notation Limit')
             for i in range(n):
-                print(f'{n}: {mat_to_string(clean(expand(m, i), 1))}')
+                print(f'{i}: {mat_to_string(clean(expand(m, i), 1))}')
             print('. . .')
         if mode == 2:
             text = input('\nEnter the MMS matrix to be converted\n(type "limit" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
