@@ -328,29 +328,30 @@ while 1:
             if text == '.':
                 mode = 0
                 continue
+            m = clean(string_to_mat(text), 0)
+            t = type(m)
+            if t < 0:
+                print('\nMatrix type: Nonstandard')
+                continue
+            if not t:
+                print('\nMatrix type: Zero')
+                continue
+            if t == 1:
+                print('\nMatrix type: Successor\n')
+                print(mat_to_string(clean(expand(m, 0), 1)))
+                continue
+            if t == 2:
+                print('\nMatrix type: Limit')
+            if t == 3:
+                print('\nMatrix type: Subsystem Limit')
+            if t == 4:
+                print('\nMatrix type: Notation Limit')   
             n = input('\nEnter the number of expansions (leave empty for 5): ')
             if n == '':
                 n = 6
             else:
                 n = int(n) + 1
-            m = clean(string_to_mat(text), 0)
-            t = type(m)
-            if t < 0:
-                print('Matrix type: Nonstandard')
-                continue
-            if not t:
-                print('Matrix type: Zero')
-                continue
-            if t == 1:
-                print('Matrix type: Successor')
-                print(mat_to_string(clean(expand(m, 0), 1)))
-                continue
-            if t == 2:
-                print('Matrix type: Limit')
-            if t == 3:
-                print('Matrix type: Subsystem Limit')
-            if t == 4:
-                print('Matrix type: Notation Limit')
+            print()
             for i in range(n):
                 print(f'{i}: {mat_to_string(clean(expand(m, i), 1))}')
             print('. . .')
