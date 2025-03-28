@@ -214,12 +214,12 @@ def type(m):
                 return -2 #Nonstandard: some column contains entries bigger than the previous one
             prev_entry = entry
     c = 'limit'
-    n = 0
+    n = 1
     while 1:
         d = expand(c, n)
         cmp = compare(d, m)
         if not cmp:
-            return 3 #Subsystem Limit
+            return 3 #Subsystem Limit: any matrix of the form (0)(1,1,1...1) with at least 2 1s
         elif cmp > 0:
             c = d
             break
@@ -231,8 +231,8 @@ def type(m):
             cmp = compare(d, m)
             if not cmp:
                 if not compare_columns(m[-1], [0]):
-                    return 1 #Successor
-                return 2 #Limit
+                    return 1 #Successor Ordinal
+                return 2 #Limit Ordinal
             elif cmp > 0:
                 c = d
                 break
@@ -316,16 +316,31 @@ def mat_to_string(m):
 def seq_to_string(s):
     return ','.join([str(e) for e in s])
 
+def is_string_int(s):
+    try: 
+        int(s)
+    except ValueError:
+        return 0
+    else:
+        return 1
+
 mode = 0
 while 1:
     try:
         if mode == 0:
-            mode = int(input('Please select a mode to continue\n\n1: Expand MMS matrix\n2: Convert MMS matrix to MMS sequence\n3: Convert MMS sequence to MMS matrix\n4: Credits\n\nType the mode number and press enter: '))
+            mode = input('Please select a mode to continue\n\n1: Expand MMS matrix\n2: Convert MMS matrix to MMS sequence\n3: Convert MMS sequence to MMS matrix\n4: Credits\n\nType the mode number and press enter: ')
+            if not is_string_int(mode):
+                print('\nEnter an INTEGER!\n')
+                mode = 0
+                continue
+            mode = int(mode)
             if mode > 4 or mode < 1:
-                raise Exception
+                print(f'\nThere\'s no mode {mode}!\n')
+                mode = 0
         if mode == 1:
             text = input('\nEnter the MMS matrix to expand\n(type "limit" to expand the limit matrix, type "." to return to mode selection)\n')
             if text == '.':
+                print()
                 mode = 0
                 continue
             m = clean(string_to_mat(text), 0)
@@ -337,16 +352,16 @@ while 1:
                 print('\nMatrix type: Zero')
                 continue
             if t == 1:
-                print('\nMatrix type: Successor\n')
-                print(mat_to_string(clean(expand(m, 0), 1)))
+                print('\nMatrix type: Successor Ordinal')
+                print('\nPredecessor: ' + mat_to_string(clean(expand(m, 0), 1)))
                 continue
             if t == 2:
-                print('\nMatrix type: Limit')
+                print('\nMatrix type: Limit Ordinal')
             if t == 3:
                 print('\nMatrix type: Subsystem Limit')
             if t == 4:
                 print('\nMatrix type: Notation Limit')   
-            n = input('\nEnter the number of expansions (leave empty for 5): ')
+            n = input('\nEnter the number of expansions (leave empty for 6): ')
             if n == '':
                 n = 6
             else:
@@ -358,6 +373,7 @@ while 1:
         if mode == 2:
             text = input('\nEnter the MMS matrix to be converted\n(type "limit" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
             if text == '.':
+                print()
                 mode = 0
                 continue
             m = clean(string_to_mat(text), 0)
