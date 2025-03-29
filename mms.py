@@ -66,7 +66,7 @@ def corresponding_entry(m, rx, xy): #In theory I could also omit rx (root x) sin
     x, y = xy
     cs = -1
     if correspondence.has(str([m, xy])):
-        cs = correspondence.get(str([m, xy]))
+        return correspondence.get(str([m, xy]))
     else:
         if x < rx[0]:
             cs = -1
