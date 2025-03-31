@@ -63,14 +63,13 @@ def get_row_index(m, xy):
     return row_index_increase(ri[lnz] if lnz >= 0 else [], y - lnz - 1)
 
 def corresponding_entry(m, rx, xy): #In theory I could also omit rx (root x) since you can calculate it from the matrix m, but that would make it unnecessarily complicated...
-    x, y = xy
-    cs = -1
     if correspondence.has(str([m, xy])):
         return correspondence.get(str([m, xy]))
     else:
-        if x < rx[0]:
+        x, y = xy
+        if x < rx:
             cs = -1
-        elif x == rx[0]:
+        elif x == rx:
             cs = y
         else:
             cs = corresponding_entry(m, rx, parent(m, xy))
@@ -150,15 +149,15 @@ def expand(m, n):
                 target_column = mat[x + w * i] = []
                 last_magma = -1
                 for y, val in enumerate(mat[x]):
-                    asc = corresponding_entry(mat, root, [x, y])
+                    asc = corresponding_entry(mat, root[0], [x, y])
                     if asc >= 0:
                         if asc <= root[1] and not row_index_compare(get_row_index(mat, [root[0], asc]), get_row_index(mat, [x, y])):
                             for j in range((reference[asc - 1] if asc - 1 >= 0 else -1) + 1, reference[asc] + 1):
-                                target_column.append(val - extract(mat, [root[0], asc]) + extract(mat, [root[0] + w * i, j]))
-                            last_magma = asc
+                                target_column.append(val - extract(mat, [root[0], asc]) + extract(mat, [root[0] + w * i, j]))    
+                            last_magma = asc 
                         else:
                             if last_magma >= 0:
-                                target_column.append(val - extract(mat, [root[0], last_magma]) + extract(mat, [root[0] + w * i, reference[last_magma]]))
+                                target_column.append(val - extract(mat, [root[0], last_magma]) + extract(mat, [root[0] + w * i, reference[last_magma]]))  
                             else:
                                 target_column.append(val - extract(mat, [root[0], 0]) + extract(mat, [root[0] + w * i, 0]))
                     else:
