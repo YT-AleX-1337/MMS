@@ -352,7 +352,7 @@ while 1:
                 continue
             if t == 1:
                 print('\nMatrix type: Successor Ordinal')
-                print('\nPredecessor: ', mat_to_string(clean(expand(m, 0), 1)))
+                print('\nPredecessor:', mat_to_string(clean(expand(m, 0), 1)))
                 continue
             if t == 2:
                 print('\nMatrix type: Limit Ordinal')
