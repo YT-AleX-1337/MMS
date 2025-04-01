@@ -142,6 +142,7 @@ def expand(m, n):
                     y2 += 1
                 else:
                     y1 += 1
+            print(reference)
             for dx in range(1, w + 1): #Copy Bad Part and ascend
                 x = root[0] + dx
                 while len(mat) <= x + w * i:
@@ -152,7 +153,7 @@ def expand(m, n):
                     asc = corresponding_entry(mat, root[0], [x, y])
                     if asc >= 0:
                         if asc <= root[1] and not row_index_compare(get_row_index(mat, [root[0], asc]), get_row_index(mat, [x, y])):
-                            for j in range((reference[asc - 1] if asc - 1 >= 0 else -1) + 1, reference[asc] + 1):
+                            for j in range((reference[asc - 1] if asc >= 1 else -1) + 1, reference[asc] + 1):
                                 target_column.append(val - extract(mat, [root[0], asc]) + extract(mat, [root[0] + w * i, j]))    
                             last_magma = asc 
                         else:
