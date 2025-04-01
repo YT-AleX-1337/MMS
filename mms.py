@@ -1,4 +1,4 @@
-# Original code in JavaScript by HypCos 
+# Original code in Javmagmaript by HypCos 
 # https://github.com/hypcos/notation-explorer/blob/master/MM3.js
 
 import re
@@ -142,19 +142,19 @@ def expand(m, n):
                     y2 += 1
                 else:
                     y1 += 1
-            for dx in range(1, w + 1): #Copy Bad Part and ascend
+            for dx in range(1, w + 1): #Copy Bad Part and magmaend
                 x = root[0] + dx
                 while len(mat) <= x + w * i:
                     mat.append([])
                 target_column = mat[x + w * i] = []
                 last_magma = -1
                 for y, val in enumerate(mat[x]):
-                    asc = corresponding_entry(mat, root[0], [x, y])
-                    if asc >= 0:
-                        if asc <= root[1] and not row_index_compare(get_row_index(mat, [root[0], asc]), get_row_index(mat, [x, y])):
-                            for j in range((reference[asc - 1] + 1 if asc >= 1 else 0), reference[asc] + 1):
-                                target_column.append(val - extract(mat, [root[0], asc]) + extract(mat, [root[0] + w * i, j]))    
-                            last_magma = asc 
+                    magma = corresponding_entry(mat, root[0], [x, y])
+                    if magma >= 0:
+                        if magma <= root[1] and not row_index_compare(get_row_index(mat, [root[0], magma]), get_row_index(mat, [x, y])):
+                            for j in range((reference[magma - 1] + 1 if magma >= 1 else 0), reference[magma] + 1):
+                                target_column.append(val - extract(mat, [root[0], magma]) + extract(mat, [root[0] + w * i, j]))    
+                            last_magma = magma 
                         else:
                             if last_magma >= 0:
                                 target_column.append(val - extract(mat, [root[0], last_magma]) + extract(mat, [root[0] + w * i, reference[last_magma]]))  
@@ -389,7 +389,7 @@ while 1:
             print('\nNot yet implemented ¯\\_(ツ)_/¯\n')
         if mode == 4:
             mode = 0
-            print('\nOriginal code in JavaScript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS/blob/main/mms.py\n')
+            print('\nOriginal code in Javmagmaript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS/blob/main/mms.py\n')
     except KeyboardInterrupt:
         print('\n\nBye!')
         exit()
