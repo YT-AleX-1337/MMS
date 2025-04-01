@@ -142,7 +142,6 @@ def expand(m, n):
                     y2 += 1
                 else:
                     y1 += 1
-            print(reference)
             for dx in range(1, w + 1): #Copy Bad Part and ascend
                 x = root[0] + dx
                 while len(mat) <= x + w * i:
