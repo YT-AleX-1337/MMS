@@ -1,4 +1,4 @@
-# Original code in Javmagmaript by HypCos 
+# Original code in JavaScript by HypCos 
 # https://github.com/hypcos/notation-explorer/blob/master/MM3.js
 
 import re
@@ -130,7 +130,7 @@ def expand(m, n):
                 mat[lnzx][lnzy + y] = val
             else:
                 mat[lnzx].append(val)
-        for i in range(1, n + 1): #Actual expansion
+        for i in range(1, n + 1): #Here begins the actual expansion process
             reference = []
             y1, y2 = 0, 0
             while y2 <= root[1] + h * i: #Build reference array
@@ -142,7 +142,7 @@ def expand(m, n):
                     y2 += 1
                 else:
                     y1 += 1
-            for dx in range(1, w + 1): #Copy Bad Part and magmaend
+            for dx in range(1, w + 1): #Expand matrix
                 x = root[0] + dx
                 while len(mat) <= x + w * i:
                     mat.append([])
@@ -389,7 +389,7 @@ while 1:
             print('\nNot yet implemented ¯\\_(ツ)_/¯\n')
         if mode == 4:
             mode = 0
-            print('\nOriginal code in Javmagmaript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS/blob/main/mms.py\n')
+            print('\nOriginal code in JavaScript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS/blob/main/mms.py\n')
     except KeyboardInterrupt:
         print('\n\nBye!')
         exit()
