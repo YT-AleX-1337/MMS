@@ -4,20 +4,8 @@
 import re
 import traceback
 
-class Cache:
-    def __init__(self):
-        self.cache = {}
-    def get(self, key):
-        return self.cache.get(key)
-    def set(self, key, value):
-        self.cache[key] = value
-    def has(self, key):
-        return key in self.cache
-    def clear(self):
-        self.cache.clear()   
-
-row_indices = Cache()
-correspondence = Cache()
+row_indices = {}
+correspondence = {}
 
 def row_index_increase(v, i): #v + ω^i
     c = v.copy()
@@ -45,8 +33,8 @@ def get_row_index(m, xy):
     if x >= len(m) or x < 0 or y < 0:
         return []
     ri = []
-    if row_indices.has(str(m[x])):
-        ri = row_indices.get(str(m[x]))
+    if str(m[x]) in row_indices:
+        ri = row_indices[str(m[x])]
     else:
         for i in range(len(m[x])):
             if not i:
@@ -56,15 +44,15 @@ def get_row_index(m, xy):
                 while j > 0 and extract(m, [x, j - 1]) == extract(m, [x, i]):
                     j -= 1
                 ri.append(row_index_increase(ri[i - 1], i - j))
-        row_indices.set(str(m[x]), ri)
+        row_indices[str(m[x])] = ri
     if y < len(ri):
         return ri[y]
     lnz = len(ri) - 1
     return row_index_increase(ri[lnz] if lnz >= 0 else [], y - lnz - 1)
 
 def corresponding_entry(m, rx, xy): #In theory I could also omit rx (root x) since you can calculate it from the matrix m, but that would make it unnecessarily complicated...
-    if correspondence.has(str([m, xy])):
-        return correspondence.get(str([m, xy]))
+    if str([m, xy]) in correspondence:
+        return correspondence[str([m, xy])]
     else:
         x, y = xy
         if x < rx:
@@ -73,7 +61,7 @@ def corresponding_entry(m, rx, xy): #In theory I could also omit rx (root x) sin
             cs = y
         else:
             cs = corresponding_entry(m, rx, parent(m, xy))
-        correspondence.set(str([m, xy]), cs)
+        correspondence[str([m, xy])] = cs
     return cs
 
 def parent_check(m, xy):
