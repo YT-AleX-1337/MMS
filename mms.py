@@ -414,7 +414,7 @@ while 1:
             except KeyboardInterrupt:
                 print('Interrupt detected')
         if mode == 3:
-            text = input('\nEnter the MMS sequence to be converted\n(type "1,ω", "1,w" or "1,W" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
+            text = input('\nEnter the MMS sequence to be converted\n(type "1,ω", "1,w" or "1,W" to convert the limit matrix, type "." to return to mode selection)\nWARNING (1/2): THIS MODE IS NOT ABLE TO DETECT NONSTANDARD SEQUENCES, WHICH WILL MAKE THE PROGRAM HANG UNTIL KEYBOARD INTERRUPT!\nWARNING (2/2): CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
             if text == '.':
                 print()
                 mode = 0
