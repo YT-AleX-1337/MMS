@@ -270,6 +270,29 @@ def mat_to_seq(m):
         seq.append(sn)
     return seq
 
+def seq_to_mat(s):
+    if s == [1, 'ω']:
+        return 'limit'
+    mat = []
+    for i in range(len(s)):
+        if s[i] < 1:
+            raise Exception('Sequences can\'t contain numbers other than non-zero naturals (1, 2, 3 and so on)')
+        if s[i] == 1:
+            mat.append([0])
+        else:
+            sn = 2
+            col = [1]
+            test = mat[:i]
+            while sn != s[i]:
+                col = increase_column(col, 1)
+                inc = 2
+                while type(test + [col]) < 0:
+                    col = increase_column(col, inc)
+                    inc += 1
+                sn += 1
+            mat.append(col)
+    return mat
+
 def dcopy(m): #Since copy.deepcopy() is slow as f***, I implemented it myself
     cpy = []
     for c in m:
@@ -285,7 +308,7 @@ def clean(m, display):
             column.pop()
         if display and column == []:
             column.append(0)
-    return mat 
+    return mat
 
 def extract(m, xy):
     x, y = xy
@@ -311,6 +334,12 @@ def mat_to_string(m):
     if str(m).casefold() == 'limit':
         return m
     return ''.join(['(' + ','.join(map(str, row)) + ')' for row in m])
+
+def string_to_seq(s):
+    if s in ['1,ω', '1,w', '1,W']:
+        return [1, 'ω'] 
+    s = list(map(int, s.split(",")))
+    return s
 
 def seq_to_string(s):
     return ','.join([str(e) for e in s])
@@ -385,8 +414,16 @@ while 1:
             except KeyboardInterrupt:
                 print('Interrupt detected')
         if mode == 3:
-            mode = 0
-            print('\nNot yet implemented ¯\\_(ツ)_/¯\n')
+            text = input('\nEnter the MMS sequence to be converted\n(type "1,ω", "1,w" or "1,W" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
+            if text == '.':
+                print()
+                mode = 0
+                continue
+            s = string_to_seq(text)
+            try:
+                print(mat_to_string(seq_to_mat(s)))
+            except KeyboardInterrupt:
+                print('Interrupt detected')
         if mode == 4:
             mode = 0
             print('\nOriginal code in JavaScript by HypCos\nhttps://github.com/hypcos/notation-explorer/blob/master/MM3.js\n\nPython implementation, matrix type checking and conversion from and to sequence by AleX-1337\nhttps://github.com/YT-AleX-1337/MMS/blob/main/mms.py\n')
