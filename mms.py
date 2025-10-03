@@ -50,7 +50,7 @@ def get_row_index(m, xy):
     lnz = len(ri) - 1
     return row_index_increase(ri[lnz] if lnz >= 0 else [], y - lnz - 1)
 
-def corresponding_entry(m, rx, xy): #In theory I could also omit rx (root x) since you can calculate it from the matrix m, but that would make it unnecessarily complicated...
+def corresponding_entry(m, rx, xy): # In theory I could also omit rx (root x) since you can calculate it from the matrix m, but that would make it unnecessarily complicated...
     if str([m, xy]) in correspondence:
         return correspondence[str([m, xy])]
     else:
@@ -91,12 +91,12 @@ def expand(m, n):
         return mat
     mat = dcopy(m)
     lnzx = len(m) - 1
-    if not zero(m, lnzx): #Is last column non 0?
+    if not zero(m, lnzx): # Is last column non 0?
         lnzy = len(m[lnzx]) - 1
         lnz = extract(m, [lnzx, lnzy])
         root_checks = []
         index = [lnzx, lnzy]
-        while index[1] >= 0: #Get root checks
+        while index[1] >= 0: # Get root checks
             while extract(m, index) != lnz - 1:
                 index = parent(m, index)
             while len(root_checks) <= index[0]:
@@ -104,24 +104,24 @@ def expand(m, n):
             root_checks[index[0]].insert(0, index[1])
             index[1] -= 1
         column_weigths = [1] + [len(column) for column in root_checks]
-        if column_weigths[len(column_weigths) - 1] == 1: #Last column with root checks only has 1? Then that's the root
+        if column_weigths[len(column_weigths) - 1] == 1: # Last column with root checks only has 1? Then that's the root
             root = parent(m, [lnzx, lnzy])
-        else: #Find the root
+        else: # Find the root
             r = len(column_weigths) - 2
             while column_weigths[r] >= column_weigths[len(column_weigths) - 1]:
                 r -= 1
             root = [r, root_checks[r][0]]
-        w, h = [lnzx - root[0], lnzy - root[1]] #Width and height of bad part
+        w, h = [lnzx - root[0], lnzy - root[1]] # Width and height of bad part
         mat[lnzx][lnzy] -= 1
         for y, val in enumerate(m[root[0]][root[1]:]):
             if lnzy + y < len(mat[lnzx]):    
                 mat[lnzx][lnzy + y] = val
             else:
                 mat[lnzx].append(val)
-        for i in range(1, n + 1): #Here begins the actual expansion process
+        for i in range(1, n + 1): # Here begins the actual expansion process
             reference = []
             y1, y2 = 0, 0
-            while y2 <= root[1] + h * i: #Build reference array
+            while y2 <= root[1] + h * i: # Build reference array
                 cmp = row_index_compare(get_row_index(mat, [root[0], y1 + 1]), get_row_index(mat, [root[0] + w * i, y2]))
                 if cmp > 0 or y1 >= root[1]:
                     while len(reference) <= y1:
@@ -130,7 +130,7 @@ def expand(m, n):
                     y2 += 1
                 else:
                     y1 += 1
-            for dx in range(1, w + 1): #Expand matrix
+            for dx in range(1, w + 1): # Expand matrix
                 x = root[0] + dx
                 while len(mat) <= x + w * i:
                     mat.append([])
@@ -187,18 +187,18 @@ def compare(m1, m2):
 
 def type(m):
     if str(m).casefold() == 'limit':
-        return 4 #Notation Limit
+        return 4 # Notation Limit
     if not len(m):
-        return 0 #Zero Ordinal
+        return 0 # Zero Ordinal
     prev_col0 = -1
     for col in clean(m, 1):
         if col[0] > prev_col0 + 1:
-            return -3 #Nonstandard: some column's first entry is bigger than the previous column's first entry + 1
+            return -3 # Nonstandard: some column's first entry is bigger than the previous column's first entry + 1
         prev_col0 = col[0]
         prev_entry = -1
         for entry in col:
             if prev_entry > -1 and entry > prev_entry:
-                return -2 #Nonstandard: some column contains entries bigger than the previous one
+                return -2 # Nonstandard: some column contains entries bigger than the previous one
             prev_entry = entry
     c = 'limit'
     n = 1
@@ -206,7 +206,7 @@ def type(m):
         d = expand(c, n)
         cmp = compare(d, m)
         if not cmp:
-            return 3 #Subsystem Limit: any matrix of the form (0)(1,1,1...1) with at least 2 1s
+            return 3 # Subsystem Limit: any matrix of the form (0)(1,1,1...1) with at least 2 1s
         elif cmp > 0:
             c = d
             break
@@ -218,13 +218,13 @@ def type(m):
             cmp = compare(d, m)
             if not cmp:
                 if not compare_columns(m[-1], [0]):
-                    return 1 #Successor Ordinal
-                return 2 #Limit Ordinal
+                    return 1 # Successor Ordinal
+                return 2 # Limit Ordinal
             elif cmp > 0:
                 c = d
                 break
             if len(d) >= len(m) and compare(d[:len(m)], m) < 0:
-                return -1 #Nonstandard
+                return -1 # Nonstandard
             n += 1
 
 def increase_column(c, inc):
@@ -281,7 +281,7 @@ def seq_to_mat(s):
             mat.append(col)
     return mat
 
-def dcopy(m): #Since copy.deepcopy() is slow as f***, I implemented it myself
+def dcopy(m): # Since copy.deepcopy() is slow as f***, I implemented it myself
     cpy = []
     for c in m:
         cpy.append(c.copy())
