@@ -163,7 +163,7 @@ def compare_columns(c1, c2):
             return -1
         if col1[i] > col2[i]:
             return 1
-        if col1[i] == col2[i] == 0:
+        if not col1[i]:
             return 0
 
 def compare(m1, m2):
@@ -182,7 +182,7 @@ def compare(m1, m2):
             return -1
         if compare_columns(mat1[i], mat2[i]) > 0:
             return 1
-        if compare_columns(mat1[i], mat2[i]) == 0 and mat1[i] == [-1]:
+        if mat1[i] == [-1]:
             return 0
 
 def type(m):
@@ -286,7 +286,7 @@ def dcopy(m): # Since copy.deepcopy() is slow as f***, I implemented it myself
     for c in m:
         cpy.append(c.copy())
     return cpy
-    
+
 def clean(m, display):
     if str(m).casefold() == 'limit':
         return 'limit'
@@ -305,7 +305,7 @@ def extract(m, xy):
     if y > len(m[x]) - 1:
         return 0
     return m[x][y]
-    
+
 def zero(m, x):
     if extract(m, [x, 0]) < 1:
         return 1
@@ -314,13 +314,17 @@ def zero(m, x):
 def string_to_mat(s):
     if s.casefold() == 'limit':
         return s
+    if s.casefold() in ['empty', 'empty matrix']:
+    	return []
     rows = re.findall(r'\((.*?)\)', s)
     m = [list(map(int, row.split(',')) if row != '' else []) for row in rows]    
     return m
 
 def mat_to_string(m):
     if str(m).casefold() == 'limit':
-        return m
+        return 'Limit'
+    if not len(m):
+    	return 'Empty matrix'
     return ''.join(['(' + ','.join(map(str, row)) + ')' for row in m])
 
 def string_to_seq(s):
