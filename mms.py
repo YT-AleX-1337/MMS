@@ -274,9 +274,13 @@ def seq_to_mat(s):
             while sn != s[i]:
                 col = increase_column(col, 1)
                 inc = 2
-                while type(test + [col]) < 0:
+                t = type(test + [col])
+                while t < 0:
+                    if t == -3:
+                        return None
                     col = increase_column(col, inc)
                     inc += 1
+                    t = type(test + [col])
                 sn += 1
             mat.append(col)
     return mat
@@ -406,14 +410,19 @@ while 1:
             except KeyboardInterrupt:
                 print('Interrupt detected')
         if mode == 3:
-            text = input('\nEnter the MMS sequence to be converted\n(type "1,ω", "1,w" or "1,W" to convert the limit matrix, type "." to return to mode selection)\nWARNING (1/2): THIS MODE IS NOT ABLE TO DETECT NONSTANDARD SEQUENCES, WHICH WILL MAKE THE PROGRAM HANG UNTIL KEYBOARD INTERRUPT!\nWARNING (2/2): CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
+            text = input('\nEnter the MMS sequence to be converted\n(type "1,ω", "1,w" or "1,W" to convert the limit matrix, type "." to return to mode selection)\nWARNING: CONVERSION MAY TAKE UP TO OR EVEN LONGER THAN 1 MINUTE!\nUse the keyboard interrupt (Ctrl+C on Windows) to cancel sequence calculation\n')
             if text == '.':
                 print()
                 mode = 0
                 continue
             s = string_to_seq(text)
             try:
-                print(mat_to_string(seq_to_mat(s)))
+                m = seq_to_mat(s)
+                if m == None:
+                    m = 'Nonstandard'
+                else:
+                    m = mat_to_string(m)
+                print(m)
             except KeyboardInterrupt:
                 print('Interrupt detected')
         if mode == 4:
