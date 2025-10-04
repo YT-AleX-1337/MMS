@@ -5,7 +5,8 @@ First version released on October 7th, 2024.<br/>
 
 ## What's MMS
 [Mutant Matrix System (MMS)](https://googology.miraheze.org/wiki/Mutant_Matrix_System) is an ordinal notation (that is, a way of notating transfinite ordinals) developed by Aarex and HypCos. It's basically the most powerful well defined notation, being more powerful than [Bashicu Matrix System (BMS)](https://googology.miraheze.org/wiki/Bashicu_matrix_system), [Y sequence](https://googology.miraheze.org/wiki/Y_sequence) and [ω-Y sequence](https://googology.miraheze.org/wiki/%5C(%5Comega%5C)-Y_sequence) (the previous most powerful notation).<br/><br/>
-Basic examples (these are extremely small examples, therefore it doesn't at all paint a picture for how powerful MMS is):<br/>
+Examples:<br/>
+<br/>
 Empty matrix corresponds to 0<br/>
 (0) corresponds to 1<br/>
 (0)(0) corresponds to 2<br/>
