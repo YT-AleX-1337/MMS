@@ -61,7 +61,7 @@ Now skipping to only the most important milestone ordinals:<br/>
 (0)(1)(2,1)(3,2,1)(4,2,1)(5,1) is the limit of [Bird's Array Notation (BAN)](https://googology.miraheze.org/wiki/Bird%27s_array_notation)<br/>
 (0)(1)(2,1)(3,2,1)(4,2,1)(5,2)(4) is the [Extended Buchholz Ordinal (EBO)](https://googology.miraheze.org/wiki/Extended_Buchholz%27s_ordinal)<br/>
 (0)(1)(2,1)(3,2,1)(4,3) is the limit of [Primary Dropping Array Notation (pDAN)](https://googology.miraheze.org/wiki/Primary_dropping_array_notation)<br/>
-(0)(1)(2,1)(3,2,1)(4,3,1)(4,2,1)(5,2,1)(5) 1,2,4,8,14,12,18,13 is the limit of Secondary Dropping Array Notation (sDAN)<br/>
+(0)(1)(2,1)(3,2,1)(4,3,1)(4,2,1)(5,2,1)(5) is the limit of Secondary Dropping Array Notation (sDAN)<br/>
 (0)(1)(2,1)(3,2,1)(4,3,1)(5) is the limit of Dropping Array Notation (DAN) (and therefore [Strong Array Notation (SAN)](https://googology.miraheze.org/wiki/Strong_array_notation) as a whole)<br/>
 
 (0)(1)(2,1)(3,2,1)(4,3,2,1) is the limit of Trio Sequence System (TSS)<br/>
