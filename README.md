@@ -49,15 +49,15 @@ I'll now speed up significantly (maybe some day I will post a more detailed anal
 (0)(1)(2,1)(3,1)(4,1) corresponds to [Γ_0](https://googology.miraheze.org/wiki/Feferman%E2%80%93Sch%C3%BCtte_ordinal) = ϕ(1,0,0) = ψ(Ω^Ω)<br/>
 (0)(1)(2,1)(3,1)(4,1)(4) corresponds to ϕ(ω,0,0) = ψ(Ω^(Ω\*ω))<br/>
 (0)(1)(2,1)(3,1)(4,1)(4,1) corresponds to [ϕ(1,0,0,0)](https://googology.miraheze.org/wiki/Ackermann_ordinal) = ψ(Ω^Ω^2)<br/>
-(0)(1)(2,1)(3,1)(4,1)(5) corresponds to ψ(Ω^Ω^ω) ([the Small Veblen Ordinal (SVO)](https://googology.miraheze.org/wiki/Small_Veblen_ordinal))<br/>
-(0)(1)(2,1)(3,1)(4,1)(5,1) corresponds to ψ(Ω^Ω^Ω) ([the Large Veblen Ordinal (LVO)](https://googology.miraheze.org/wiki/Large_Veblen_ordinal))<br/>
+(0)(1)(2,1)(3,1)(4,1)(5) corresponds to ψ(Ω^Ω^ω) (the [Small Veblen Ordinal (SVO)](https://googology.miraheze.org/wiki/Small_Veblen_ordinal))<br/>
+(0)(1)(2,1)(3,1)(4,1)(5,1) corresponds to ψ(Ω^Ω^Ω) (the [Large Veblen Ordinal (LVO)](https://googology.miraheze.org/wiki/Large_Veblen_ordinal))<br/>
 (0)(1)(2,1)(3,1)(4,1)(5,1)(6,1) corresponds to ψ(Ω^Ω^Ω^Ω)<br/>
-(0)(1)(2,1)(3,2) corresponds to ψ(ε_(Ω+1)) ([the Bachmann-Howard Ordinal (BHO)](https://googology.miraheze.org/wiki/Bachmann-Howard_ordinal))<br/>
+(0)(1)(2,1)(3,2) corresponds to ψ(ε_(Ω+1)) (the [Bachmann-Howard Ordinal (BHO)](https://googology.miraheze.org/wiki/Bachmann-Howard_ordinal))<br/>
 
 Now skipping to only the most important milestone ordinals:<br/>
 
-(0)(1)(2,1)(3,2,1) is the [Buchholz Ordinal](https://googology.miraheze.org/wiki/%CE%A8_0(%CE%A9_%CF%89))<br/>
-(0)(1)(2,1)(3,2,1)(4,2)(5,2,1) is the [Takeuti-Feferman-Buchholz Ordinal](https://googology.miraheze.org/wiki/Takeuti-Feferman-Buchholz_ordinal)<br/>
+(0)(1)(2,1)(3,2,1) is the [Buchholz Ordinal (BO)](https://googology.miraheze.org/wiki/%CE%A8_0(%CE%A9_%CF%89))<br/>
+(0)(1)(2,1)(3,2,1)(4,2)(5,2,1) is the [Takeuti-Feferman-Buchholz Ordinal (TFBO)](https://googology.miraheze.org/wiki/Takeuti-Feferman-Buchholz_ordinal)<br/>
 (0)(1)(2,1)(3,2,1)(4,2,1)(5,1) is the limit of [Bird's Array Notation (BAN)](https://googology.miraheze.org/wiki/Bird%27s_array_notation)<br/>
 (0)(1)(2,1)(3,2,1)(4,2,1)(5,2)(4) is the [Extended Buchholz Ordinal (EBO)](https://googology.miraheze.org/wiki/Extended_Buchholz%27s_ordinal)<br/>
 (0)(1)(2,1)(3,2,1)(4,3) is the limit of [Primary Dropping Array Notation (pDAN)](https://googology.miraheze.org/wiki/Primary_dropping_array_notation)<br/>
